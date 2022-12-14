@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:notes_app/controllers/create_notes_controller.dart';
+import 'package:notes_app/controllers/update_notes%20controller.dart';
+import 'package:notes_app/models/notesmodel.dart';
 import 'package:notes_app/widgets/reuse_text_field.dart';
 
-class CreateNotes extends StatelessWidget {
-  CreateNotes({Key? key}) : super(key: key);
+class EditNotes extends StatelessWidget {
+  EditNotes({
+    Key? key,
+  }) : super(key: key);
   final createnotescontroller = Get.find<CreateNotesController>();
-
+  final updatenotescontroller = Get.find<UpdateNotesController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,12 +27,12 @@ class CreateNotes extends StatelessWidget {
             children: [
               MaterialButton(
                 onPressed: () {
-                  createnotescontroller.create();
+                  updatenotescontroller.updatenotes();
                   createnotescontroller.tittlecontroller.clear();
                   createnotescontroller.descriptioncontroller.clear();
                 },
-                color: Colors.red,
-                child: const Text("Create Notes"),
+                color: Colors.yellow,
+                child: const Text("UpDate Notes"),
               ),
             ],
           ),

@@ -5,16 +5,29 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Flexible(
-          child: MaterialButton(
-            onPressed: () {},
-            color: Colors.yellow,
-            child: Text("SearchScreen"),
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.all(20),
+          child: TextFormField(
+            decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              border: InputBorder.none,
+              labelText: "Search Notes",
+              suffixIcon: Icon(Icons.search),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide(
+                  color: Colors.red,
+                  width: 2.0,
+                ),
+              ),
+            ),
           ),
         ),
-      ),
+        SizedBox(height: 20),
+      ],
     );
   }
 }

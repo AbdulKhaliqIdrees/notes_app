@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
+import 'package:notes_app/controllers/create_notes_controller.dart';
+import 'package:notes_app/controllers/update_notes%20controller.dart';
 import 'package:notes_app/models/notesmodel.dart';
+import 'package:notes_app/screens/edit_notes.dart';
 
 class ReadNotes extends StatelessWidget {
-  const ReadNotes({Key? key}) : super(key: key);
+  ReadNotes({Key? key}) : super(key: key);
+  final createnotescontroller = Get.find<CreateNotesController>();
+  final updatenotescontroller = Get.find<UpdateNotesController>();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,7 @@ class ReadNotes extends StatelessWidget {
             shrinkWrap: true,
             itemCount: contactsBox.length,
             itemBuilder: (context, index) {
-              final contact = contactsBox.getAt(index) as NotesModel;
+              final data = contactsBox.getAt(index) as NotesModel;
 
               return Padding(
                 padding: EdgeInsets.all(10),
@@ -27,7 +33,7 @@ class ReadNotes extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          contact.tittle,
+                          data.tittle,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -36,7 +42,7 @@ class ReadNotes extends StatelessWidget {
                         ),
                         Text(
                           DateFormat('(dd-MM-yyyy)E::KK:mm:ss a')
-                              .format(contact.datetime),
+                              .format(data.datetime),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -47,7 +53,7 @@ class ReadNotes extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      contact.description,
+                      data.description,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -55,25 +61,42 @@ class ReadNotes extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Center(
-                      child: IconButton(
-                        icon: Icon(Icons.delete),
-                        iconSize: 35,
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (Builder) {
-                                return AlertDialog(
-                                  title: Text("Do you want to delete this?"),
-                                  content: TextButton(
-                                      onPressed: () {
-                                        contactsBox.deleteAt(index);
-                                      },
-                                      child: Text("YES")),
-                                );
-                              });
-                        },
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          iconSize: 35,
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (Builder) {
+                                  return AlertDialog(
+                                    title: Text("Do you want to delete this?"),
+                                    content: TextButton(
+                                        onPressed: () {
+                                          contactsBox.deleteAt(index);
+                                        },
+                                        child: Text("YES")),
+                                  );
+                                });
+                          },
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            updatenotescontroller.edit(data);
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return EditNotes();
+                                },
+                              ),
+                            );
+                          },
+                          icon: Icon(Icons.edit),
+                          iconSize: 35,
+                        ),
+                      ],
                     ),
                     Divider(
                       thickness: 5,
