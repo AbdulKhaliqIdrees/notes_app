@@ -12,6 +12,8 @@ class NotesForSearch extends StatelessWidget {
     return WatchBoxBuilder(
         box: Hive.box<NotesModel>("boxname"),
         builder: (context, contactsBox) {
+          contactsBox.values.where((element) => false);
+
           return ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
