@@ -23,7 +23,7 @@ class CreateNotes extends StatelessWidget {
             children: [
               MaterialButton(
                 onPressed: () {
-                  createnotescontroller.create();
+                  createnotescontroller.create(context);
                   createnotescontroller.tittlecontroller.clear();
                   createnotescontroller.descriptioncontroller.clear();
                 },

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/models/notesmodel.dart';
-import 'package:notes_app/screens/edit_notes.dart';
-
-import '../controllers/update_notes controller.dart';
 
 class NotesForSearch extends StatelessWidget {
   NotesForSearch({Key? key}) : super(key: key);
-  final updatenotescontroller = Get.find<UpdateNotesController>();
+  // final updatenotescontroller = Get.find<UpdateNotesController>();
 
   @override
   Widget build(BuildContext context) {
@@ -83,14 +79,14 @@ class NotesForSearch extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            updatenotescontroller.edit(data);
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return EditNotes();
-                                },
-                              ),
-                            );
+                            // updatenotescontroller.edit(data);
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(
+                            //     builder: (context) {
+                            //       return EditNotes();
+                            //     },
+                            //   ),
+                            // );
                           },
                           icon: Icon(Icons.edit),
                           iconSize: 35,

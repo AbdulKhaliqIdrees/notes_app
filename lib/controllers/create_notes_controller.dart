@@ -7,7 +7,8 @@ import 'package:uuid/uuid.dart';
 class CreateNotesController extends GetxController {
   TextEditingController tittlecontroller = TextEditingController();
   TextEditingController descriptioncontroller = TextEditingController();
-  void create() async {
+
+  void create(BuildContext context) async {
     var id = Uuid().v1();
     final datetime = DateTime.now();
     final data = NotesModel(
@@ -17,6 +18,7 @@ class CreateNotesController extends GetxController {
       id,
       data,
     );
+    Navigator.pop(context);
   }
 
   /*void edit(NotesModel notesmodel) async {

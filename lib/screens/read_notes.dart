@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
-import 'package:notes_app/controllers/update_notes%20controller.dart';
 import 'package:notes_app/models/notesmodel.dart';
 import 'package:notes_app/screens/edit_notes.dart';
 
 class ReadNotes extends StatelessWidget {
   ReadNotes({Key? key}) : super(key: key);
 
-  final updatenotescontroller = Get.find<UpdateNotesController>();
+  // final updatenotescontroller = Get.find<UpdateNotesController>();
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +81,11 @@ class ReadNotes extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            updatenotescontroller.edit(data);
+                            // updatenotescontroller.edit(data);
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return EditNotes();
+                                  return EditNotes(data);
                                 },
                               ),
                             );
