@@ -17,8 +17,14 @@ class UpdateNotesController extends GetxController {
 
   void updatenotes(BuildContext context) async {
     final datetime = DateTime.now();
+    bool favourite = true;
     final data = NotesModel(
-        id, tittlecontroller.text, descriptioncontroller.text, datetime);
+      id,
+      tittlecontroller.text,
+      descriptioncontroller.text,
+      datetime,
+      favourite,
+    );
     final _notes = Hive.box<NotesModel>('boxname');
     _notes.put(
       id,

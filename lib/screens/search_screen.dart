@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:notes_app/controllers/search_controller.dart';
 import 'package:notes_app/screens/notes_for_search.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final controller = Get.put(SearchController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +36,10 @@ class SearchScreen extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(20),
           child: TextFormField(
+            controller: controller.searchController,
+            onChanged: (value) {
+              controller.searchNotes(value);
+            },
             decoration: InputDecoration(
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

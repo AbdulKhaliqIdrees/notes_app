@@ -12,7 +12,10 @@ class NotesModel extends HiveObject {
   @HiveField(2) //This is Field index
   late final String description;
   @HiveField(3) //This is Field index
-  final DateTime datetime;
+  late DateTime datetime;
+  @HiveField(4) //This is Field index
+  late bool favourite;
 
-  NotesModel(this.id, this.tittle, this.description, this.datetime);
+  NotesModel(
+      this.id, this.tittle, this.description, this.datetime, this.favourite);
 }

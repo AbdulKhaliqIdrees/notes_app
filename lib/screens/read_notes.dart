@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
@@ -5,9 +7,7 @@ import 'package:notes_app/models/notesmodel.dart';
 import 'package:notes_app/screens/edit_notes.dart';
 
 class ReadNotes extends StatelessWidget {
-  ReadNotes({Key? key}) : super(key: key);
-
-  // final updatenotescontroller = Get.find<UpdateNotesController>();
+  const ReadNotes({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +70,28 @@ class ReadNotes extends StatelessWidget {
                                 builder: (Builder) {
                                   return AlertDialog(
                                     title: Text("Do you want to delete this?"),
-                                    content: TextButton(
-                                        onPressed: () {
-                                          contactsBox.deleteAt(index);
-                                        },
-                                        child: Text("YES")),
+                                    content: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        TextButton(
+                                            onPressed: () {
+                                              contactsBox.deleteAt(index);
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              "YES",
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                              ),
+                                            )),
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text("NO")),
+                                      ],
+                                    ),
                                   );
                                 });
                           },

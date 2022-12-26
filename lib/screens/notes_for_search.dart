@@ -4,15 +4,18 @@ import 'package:intl/intl.dart';
 import 'package:notes_app/models/notesmodel.dart';
 
 class NotesForSearch extends StatelessWidget {
-  NotesForSearch({Key? key}) : super(key: key);
-  // final updatenotescontroller = Get.find<UpdateNotesController>();
+  const NotesForSearch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return WatchBoxBuilder(
         box: Hive.box<NotesModel>("boxname"),
         builder: (context, contactsBox) {
-          contactsBox.values.where((element) => false);
+          contactsBox.values.where(
+            (e) {
+              return e.tittle.toLowerCase().contains();
+            },
+          ).toList();
 
           return ListView.builder(
             physics: NeverScrollableScrollPhysics(),

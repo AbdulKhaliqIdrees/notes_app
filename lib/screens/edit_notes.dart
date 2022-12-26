@@ -4,7 +4,7 @@ import 'package:notes_app/models/notesmodel.dart';
 import 'package:notes_app/widgets/reuse_text_field.dart';
 
 class EditNotes extends StatefulWidget {
-  EditNotes(this.note, {Key? key}) : super(key: key);
+  const EditNotes(this.note, {Key? key}) : super(key: key);
 
   final NotesModel note;
 
@@ -33,7 +33,7 @@ class _EditNotesState extends State<EditNotes> {
           ReUseTextFields(
               updatenotescontroller.descriptioncontroller, "Description", 5),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               MaterialButton(
                 onPressed: () {
@@ -41,6 +41,13 @@ class _EditNotesState extends State<EditNotes> {
                 },
                 color: Colors.yellow,
                 child: const Text("UpDate Notes"),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite_border,
+                  size: 35,
+                ),
               ),
             ],
           ),
