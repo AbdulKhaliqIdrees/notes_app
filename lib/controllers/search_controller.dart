@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:notes_app/models/notesmodel.dart';
 
 class SearchController extends GetxController {
@@ -14,5 +15,14 @@ class SearchController extends GetxController {
         return e.tittle.toLowerCase().contains(value);
       },
     ).toList();
+  }
+
+  void getData() {
+    notes.value = [];
+    final box = Hive.box<NotesModel>("boxname");
+    for (var item in box.values) {
+      notes.add(item);
+    }
+    searchedNotes.value = notes;
   }
 }

@@ -98,7 +98,6 @@ class ReadNotes extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            // updatenotescontroller.edit(data);
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
