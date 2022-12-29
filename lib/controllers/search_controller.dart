@@ -17,7 +17,7 @@ class SearchController extends GetxController {
     ).toList();
   }
 
-  void getData() {
+  void getNotes() {
     notes.value = [];
     final box = Hive.box<NotesModel>("boxname");
     for (var item in box.values) {
