@@ -17,7 +17,7 @@ class UpdateNotesController extends GetxController {
 
   void updatenotes(BuildContext context) async {
     final datetime = DateTime.now();
-    bool favourite = true;
+    bool favourite = false;
     final data = NotesModel(
       id,
       tittlecontroller.text,

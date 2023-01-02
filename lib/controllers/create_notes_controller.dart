@@ -10,7 +10,7 @@ class CreateNotesController extends GetxController {
 
   void create(BuildContext context) async {
     var id = Uuid().v1();
-    bool favourite = true;
+    bool favourite = false;
     final datetime = DateTime.now();
     final data = NotesModel(
       id,
